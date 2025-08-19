@@ -1,0 +1,49 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.5.4'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+// Project metadata - Updated for abdul ahad
+group = 'com._160923733155'
+version = '0.0.1-SNAPSHOT'
+description = 'Virtual Machines Management System by abdul ahad (ID: 160923733155)'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(24)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+// Custom task to show project info
+tasks.register('projectInfo') {
+	doLast {
+		println "======================================"
+		println "Project: Virtual Machines Management"
+		println "Author: abdul ahad"
+		println "Student ID: 160923733155"
+		println "Group: ${project.group}"
+		println "Version: ${project.version}"
+		println "======================================"
+	}
+}
+
+// Run project info before build
+tasks.named('build') {
+	dependsOn 'projectInfo'
+}

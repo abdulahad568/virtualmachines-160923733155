@@ -1,0 +1,23 @@
+#!/bin/sh
+# Gradle wrapper script for Unix/Linux systems
+# Project: Virtual Machines Management System
+# Author: abdul ahad
+# Student ID: 160923733155
+
+echo "Starting Gradle Wrapper for project 160923733155 by abdul ahad"
+
+# Check if Java is installed
+if ! command -v java &> /dev/null
+then
+    echo "Java could not be found"
+    echo "Please install Java 24 or higher"
+    exit
+fi
+
+# Set GRADLE_USER_HOME if not set
+if [ -z "$GRADLE_USER_HOME" ]; then
+    GRADLE_USER_HOME="$HOME/.gradle"
+fi
+
+# Execute Gradle with all arguments
+exec java -classpath "gradle/wrapper/gradle-wrapper.jar" org.gradle.wrapper.GradleWrapperMain "$@"
